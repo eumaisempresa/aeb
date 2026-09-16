@@ -3,899 +3,1679 @@
 
 <head>
 
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>Agro Radar</title>
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-      background: #f4f6f8;
-      color: #17212b;
-    }
-
-    button {
-      font-family: inherit;
-      cursor: pointer;
-    }
-
-    .app {
-      min-height: 100vh;
-    }
-
-    /* =========================
-       HEADER
-       ========================= */
-
-    .header {
-      height: 68px;
-      background: #ffffff;
-      border-bottom: 1px solid #e5e9ed;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 32px;
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: #173f2a;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-    }
-
-    .brand-name {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.4px;
-    }
-
-    .brand-sub {
-      font-size: 11px;
-      color: #7a8791;
-      margin-top: 1px;
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .demo-badge {
-      background: #fff5d6;
-      color: #806300;
-      border: 1px solid #f0df9b;
-      padding: 7px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    /* =========================
-       LAYOUT
-       ========================= */
-
-    .layout {
-      display: flex;
-      min-height: calc(100vh - 68px);
-    }
-
-    .sidebar {
-      width: 220px;
-      background: #173f2a;
-      color: white;
-      padding: 24px 14px;
-    }
-
-    .nav-title {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      opacity: .55;
-      margin: 8px 12px 10px;
-    }
-
-    .nav-item {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      padding: 11px 12px;
-      border-radius: 8px;
-      margin-bottom: 4px;
-      color: rgba(255,255,255,.78);
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .nav-item:hover,
-    .nav-item.active {
-      background: rgba(255,255,255,.11);
-      color: white;
-    }
-
-    .main {
-      flex: 1;
-      padding: 28px 32px 50px;
-      max-width: 1500px;
-    }
-
-    /* =========================
-       TITLES
-       ========================= */
-
-    .page-title {
-      font-size: 27px;
-      font-weight: 700;
-      letter-spacing: -0.8px;
-      margin: 0;
-    }
-
-    .page-description {
-      color: #71808c;
-      margin: 7px 0 25px;
-      font-size: 14px;
-    }
-
-    /* =========================
-       CARDS
-       ========================= */
-
-    .cards {
-      display: grid;
-      grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-      gap: 16px;
-      margin-bottom: 22px;
-    }
-
-    .card {
-      background: white;
-      border: 1px solid #e5e9ed;
-      border-radius: 12px;
-      padding: 19px;
-      box-shadow:
-        0 2px 8px rgba(20,30,40,.025);
-    }
-
-    .card-label {
-      font-size: 12px;
-      color: #7b8790;
-      margin-bottom: 10px;
-    }
-
-    .card-value {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -1px;
-    }
-
-    .card-note {
-      margin-top: 6px;
-      font-size: 11px;
-      color: #8a969f;
-    }
-
-    /* =========================
-       GRID
-       ========================= */
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns:
-        minmax(0, 1.35fr)
-        minmax(340px, .65fr);
-      gap: 18px;
-      margin-bottom: 18px;
-    }
-
-    .section-card {
-      background: white;
-      border: 1px solid #e5e9ed;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 20px;
-      border-bottom: 1px solid #edf0f2;
-    }
-
-    .section-title {
-      font-weight: 650;
-      font-size: 15px;
-    }
-
-    .section-content {
-      padding: 20px;
-    }
-
-    /* =========================
-       PROPERTY
-       ========================= */
-
-    .property-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 18px;
-    }
-
-    .property-name {
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .property-location {
-      color: #7c8992;
-      font-size: 13px;
-      margin-top: 5px;
-    }
-
-    .property-area {
-      text-align: right;
-    }
-
-    .property-area strong {
-      display: block;
-      font-size: 22px;
-    }
-
-    .property-area span {
-      color: #8a969f;
-      font-size: 11px;
-    }
-
-    /* =========================
-       AREAS
-       ========================= */
-
-    .area-list {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
-
-    .area-row {
-      display: grid;
-      grid-template-columns:
-        1fr 90px 90px 95px;
-      align-items: center;
-      gap: 12px;
-      border: 1px solid #edf0f2;
-      border-radius: 8px;
-      padding: 12px 14px;
-    }
-
-    .area-name {
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .area-type {
-      font-size: 11px;
-      color: #87939c;
-      margin-top: 3px;
-    }
-
-    .metric {
-      text-align: right;
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .metric small {
-      display: block;
-      color: #8a969f;
-      font-size: 10px;
-      font-weight: 400;
-      margin-bottom: 2px;
-    }
-
-    .status {
-      display: inline-block;
-      text-align: center;
-      padding: 5px 9px;
-      border-radius: 20px;
-      font-size: 10px;
-      font-weight: 700;
-    }
-
-    .status.normal {
-      background: #e7f4eb;
-      color: #28623b;
-    }
-
-    .status.monitorar {
-      background: #fff4d7;
-      color: #806300;
-    }
-
-    .status.atencao {
-      background: #fde8e7;
-      color: #9c3935;
-    }
-
-    /* =========================
-       MAP
-       ========================= */
-
-    .map {
-      height: 340px;
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(
-          135deg,
-          #dfe8dd 0%,
-          #edf1e8 50%,
-          #dce6da 100%
-        );
-    }
-
-    .map::before {
-      content: "";
-      position: absolute;
-      width: 150%;
-      height: 80px;
-      left: -20%;
-      top: 130px;
-      transform: rotate(-8deg);
-      background: rgba(255,255,255,.55);
-      border-top: 2px solid rgba(160,170,160,.35);
-      border-bottom: 2px solid rgba(160,170,160,.25);
-    }
-
-    .map::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      background: rgba(150,160,150,.28);
-      top: 230px;
-      transform: rotate(17deg);
-    }
-
-    .map-label {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: rgba(255,255,255,.92);
-      border-radius: 7px;
-      padding: 8px 10px;
-      font-size: 11px;
-      color: #55616a;
-      box-shadow: 0 2px 6px rgba(0,0,0,.08);
-      z-index: 3;
-    }
-
-    .map-legend {
-      position: absolute;
-      bottom: 12px;
-      left: 12px;
-      background: rgba(255,255,255,.93);
-      border-radius: 7px;
-      padding: 9px 11px;
-      font-size: 10px;
-      z-index: 3;
-    }
-
-    .polygon {
-      position: absolute;
-      border: 2px solid;
-      background: rgba(50,120,70,.18);
-      transform: rotate(-8deg);
-      z-index: 2;
-    }
-
-    .polygon.one {
-      width: 150px;
-      height: 100px;
-      left: 27%;
-      top: 24%;
-      border-color: #327548;
-    }
-
-    .polygon.two {
-      width: 120px;
-      height: 80px;
-      left: 51%;
-      top: 47%;
-      border-color: #aa8b29;
-      background: rgba(190,170,60,.18);
-    }
-
-    .polygon.three {
-      width: 130px;
-      height: 90px;
-      left: 66%;
-      top: 17%;
-      border-color: #327548;
-    }
-
-    .pin {
-      position: absolute;
-      width: 14px;
-      height: 14px;
-      border-radius: 50% 50% 50% 0;
-      background: #b73f36;
-      transform: rotate(-45deg);
-      z-index: 5;
-      box-shadow: 0 2px 5px rgba(0,0,0,.2);
-    }
-
-    .pin::after {
-      content: "";
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: white;
-      left: 4px;
-      top: 4px;
-    }
-
-    .pin.one {
-      left: 45%;
-      top: 38%;
-    }
-
-    .pin.two {
-      left: 58%;
-      top: 57%;
-    }
-
-    /* =========================
-       CHART
-       ========================= */
-
-    .chart {
-      height: 250px;
-      display: flex;
-      align-items: flex-end;
-      gap: 10px;
-      padding: 20px 10px 5px;
-      position: relative;
-    }
-
-    .chart-grid {
-      position: absolute;
-      left: 10px;
-      right: 10px;
-      top: 25px;
-      bottom: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      pointer-events: none;
-    }
-
-    .chart-grid div {
-      border-top: 1px dashed #e5e9ed;
-      width: 100%;
-    }
-
-    .bar {
-      flex: 1;
-      max-width: 48px;
-      background: #3f7d53;
-      border-radius: 5px 5px 0 0;
-      position: relative;
-      z-index: 2;
-      min-height: 15px;
-    }
-
-    .bar span {
-      position: absolute;
-      bottom: -22px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 10px;
-      color: #89949d;
-      white-space: nowrap;
-    }
-
-    /* =========================
-       ALERTS
-       ========================= */
-
-    .alert {
-      display: flex;
-      gap: 12px;
-      padding: 13px 0;
-      border-bottom: 1px solid #edf0f2;
-    }
-
-    .alert:last-child {
-      border-bottom: 0;
-    }
-
-    .alert-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: #fde8e7;
-      color: #a03b37;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      flex-shrink: 0;
-    }
-
-    .alert-title {
-      font-size: 12px;
-      font-weight: 650;
-    }
-
-    .alert-text {
-      color: #7d8992;
-      font-size: 11px;
-      margin-top: 4px;
-      line-height: 1.4;
-    }
-
-    /* =========================
-       ACTION
-       ========================= */
-
-    .button {
-      border: 0;
-      background: #173f2a;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 7px;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .button:hover {
-      opacity: .9;
-    }
-
-    .button.secondary {
-      background: #f1f3f5;
-      color: #34404a;
-    }
-
-    /* =========================
-       FOOTER
-       ========================= */
-
-    .data-note {
-      margin-top: 22px;
-      padding: 12px 15px;
-      border-radius: 8px;
-      background: #fff8df;
-      border: 1px solid #eee1ad;
-      color: #74652c;
-      font-size: 11px;
-    }
-
-    /* =========================
-       LOADING
-       ========================= */
-
-    .loading {
-      padding: 70px 20px;
-      text-align: center;
-      color: #78848d;
-    }
-
-    .spinner {
-      width: 28px;
-      height: 28px;
-      border: 3px solid #e3e7e9;
-      border-top-color: #173f2a;
-      border-radius: 50%;
-      margin: 0 auto 12px;
-      animation: spin .8s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* =========================
-       RESPONSIVE
-       ========================= */
-
-    @media (max-width: 1050px) {
-
-      .sidebar {
-        width: 70px;
-      }
-
-      .nav-item span:last-child,
-      .nav-title {
-        display: none;
-      }
-
-      .nav-item {
-        justify-content: center;
-      }
-
-      .cards {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 650px) {
-
-      .header {
-        padding: 0 16px;
-      }
-
-      .main {
-        padding: 20px 14px;
-      }
-
-      .sidebar {
-        display: none;
-      }
-
-      .cards {
-        grid-template-columns: 1fr 1fr;
-        gap: 9px;
-      }
-
-      .card {
-        padding: 14px;
-      }
-
-      .card-value {
-        font-size: 22px;
-      }
-
-      .area-row {
-        grid-template-columns: 1fr 70px;
-      }
-
-      .area-row .metric:nth-child(3) {
-        display: none;
-      }
-
-      .property-head {
-        flex-direction: column;
-      }
-
-      .property-area {
-        text-align: left;
-      }
-    }
-
-  </style>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
+<title>Agro Radar</title>
+
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: #f4f6f8;
+  color: #17212b;
+}
+
+
+/* LOGIN */
+
+.login-page {
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+}
+
+
+.login-card {
+
+  width: 390px;
+
+  background: white;
+
+  border:
+    1px solid #e3e7ea;
+
+  border-radius: 16px;
+
+  padding: 38px;
+
+  box-shadow:
+    0 12px 40px
+    rgba(20,30,40,.08);
+
+  text-align: center;
+}
+
+
+.logo {
+
+  width: 52px;
+  height: 52px;
+
+  margin:
+    0 auto 16px;
+
+  border-radius: 13px;
+
+  background: #173f2a;
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 25px;
+}
+
+
+.login-title {
+
+  margin: 0;
+
+  font-size: 25px;
+
+  font-weight: 700;
+}
+
+
+.login-subtitle {
+
+  color: #78848d;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  margin:
+    8px 0 25px;
+}
+
+
+.input {
+
+  width: 100%;
+
+  height: 44px;
+
+  border:
+    1px solid #dce1e5;
+
+  border-radius: 8px;
+
+  padding:
+    0 13px;
+
+  font-size: 14px;
+
+  outline: none;
+}
+
+
+.input:focus {
+
+  border-color:
+    #173f2a;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(23,63,42,.08);
+}
+
+
+.login-button {
+
+  width: 100%;
+
+  height: 44px;
+
+  margin-top: 12px;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background: #173f2a;
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 650;
+
+  cursor: pointer;
+}
+
+
+.login-button:hover {
+
+  opacity: .92;
+}
+
+
+.login-error {
+
+  display: none;
+
+  margin-top: 12px;
+
+  padding: 9px;
+
+  border-radius: 7px;
+
+  background: #fde8e7;
+
+  color: #963a36;
+
+  font-size: 11px;
+}
+
+
+.demo-note {
+
+  margin-top: 22px;
+
+  padding: 10px;
+
+  border-radius: 7px;
+
+  background: #fff8df;
+
+  color: #75652d;
+
+  font-size: 10px;
+
+  line-height: 1.4;
+}
+
+
+/* APP */
+
+#app {
+
+  display: none;
+
+  min-height: 100vh;
+}
+
+
+.header {
+
+  height: 68px;
+
+  background: white;
+
+  border-bottom:
+    1px solid #e5e9ed;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 30px;
+}
+
+
+.brand {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+
+.brand-icon {
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 10px;
+
+  background: #173f2a;
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+.brand-name {
+
+  font-size: 19px;
+
+  font-weight: 700;
+}
+
+
+.brand-sub {
+
+  font-size: 10px;
+
+  color: #7d8992;
+}
+
+
+.header-actions {
+
+  display: flex;
+
+  gap: 10px;
+
+  align-items: center;
+}
+
+
+.badge {
+
+  background: #fff5d6;
+
+  color: #806300;
+
+  border:
+    1px solid #f0df9b;
+
+  padding:
+    6px 11px;
+
+  border-radius: 20px;
+
+  font-size: 10px;
+
+  font-weight: 650;
+}
+
+
+.logout {
+
+  border: 0;
+
+  background: #f1f3f5;
+
+  color: #46515a;
+
+  border-radius: 7px;
+
+  padding: 8px 11px;
+
+  cursor: pointer;
+
+  font-size: 11px;
+}
+
+
+.layout {
+
+  display: flex;
+
+  min-height:
+    calc(100vh - 68px);
+}
+
+
+.sidebar {
+
+  width: 210px;
+
+  background: #173f2a;
+
+  color: white;
+
+  padding: 23px 13px;
+}
+
+
+.nav-title {
+
+  font-size: 9px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+
+  opacity: .5;
+
+  margin:
+    8px 11px 10px;
+}
+
+
+.nav-item {
+
+  padding:
+    10px 11px;
+
+  border-radius: 7px;
+
+  margin-bottom: 3px;
+
+  color:
+    rgba(255,255,255,.78);
+
+  font-size: 12px;
+}
+
+
+.nav-item.active {
+
+  background:
+    rgba(255,255,255,.11);
+
+  color: white;
+}
+
+
+.main {
+
+  flex: 1;
+
+  padding:
+    27px 31px;
+
+  max-width: 1450px;
+}
+
+
+.page-title {
+
+  margin: 0;
+
+  font-size: 26px;
+
+  letter-spacing: -.6px;
+}
+
+
+.page-description {
+
+  margin:
+    6px 0 23px;
+
+  color: #74818a;
+
+  font-size: 13px;
+}
+
+
+.cards {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap: 15px;
+
+  margin-bottom: 18px;
+}
+
+
+.card {
+
+  background: white;
+
+  border:
+    1px solid #e5e9ed;
+
+  border-radius: 11px;
+
+  padding: 18px;
+}
+
+
+.card-label {
+
+  font-size: 11px;
+
+  color: #7c8891;
+
+  margin-bottom: 8px;
+}
+
+
+.card-value {
+
+  font-size: 27px;
+
+  font-weight: 700;
+}
+
+
+.card-note {
+
+  font-size: 10px;
+
+  color: #8a969f;
+
+  margin-top: 5px;
+}
+
+
+.grid {
+
+  display: grid;
+
+  grid-template-columns:
+    1.35fr .65fr;
+
+  gap: 17px;
+
+  margin-bottom: 17px;
+}
+
+
+.section {
+
+  background: white;
+
+  border:
+    1px solid #e5e9ed;
+
+  border-radius: 11px;
+
+  overflow: hidden;
+}
+
+
+.section-header {
+
+  padding:
+    16px 18px;
+
+  border-bottom:
+    1px solid #edf0f2;
+
+  font-size: 14px;
+
+  font-weight: 650;
+}
+
+
+.section-body {
+
+  padding: 18px;
+}
+
+
+.property {
+
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  margin-bottom: 16px;
+}
+
+
+.property-name {
+
+  font-size: 18px;
+
+  font-weight: 700;
+}
+
+
+.property-location {
+
+  font-size: 11px;
+
+  color: #84909a;
+
+  margin-top: 4px;
+}
+
+
+.property-ha {
+
+  text-align: right;
+
+  font-size: 20px;
+
+  font-weight: 700;
+}
+
+
+.property-ha small {
+
+  display: block;
+
+  font-size: 9px;
+
+  color: #8a969f;
+
+  font-weight: 400;
+}
+
+
+.area {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 75px 85px 90px;
+
+  gap: 10px;
+
+  align-items: center;
+
+  padding:
+    11px 12px;
+
+  border:
+    1px solid #edf0f2;
+
+  border-radius: 7px;
+
+  margin-bottom: 7px;
+}
+
+
+.area-name {
+
+  font-size: 12px;
+
+  font-weight: 650;
+}
+
+
+.area-type {
+
+  color: #89949d;
+
+  font-size: 9px;
+
+  margin-top: 3px;
+}
+
+
+.metric {
+
+  text-align: right;
+
+  font-size: 12px;
+
+  font-weight: 650;
+}
+
+
+.metric small {
+
+  display: block;
+
+  color: #8b969e;
+
+  font-size: 8px;
+
+  font-weight: 400;
+}
+
+
+.status {
+
+  display: inline-block;
+
+  padding:
+    4px 7px;
+
+  border-radius: 15px;
+
+  font-size: 8px;
+
+  font-weight: 700;
+}
+
+
+.normal {
+
+  background: #e7f4eb;
+
+  color: #28623b;
+}
+
+
+.monitorar {
+
+  background: #fff4d7;
+
+  color: #806300;
+}
+
+
+.atencao {
+
+  background: #fde8e7;
+
+  color: #9c3935;
+}
+
+
+.map {
+
+  height: 315px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dce7da,
+      #eef2ea,
+      #dbe6da
+    );
+}
+
+
+.map-road {
+
+  position: absolute;
+
+  width: 130%;
+
+  height: 65px;
+
+  left: -10%;
+
+  top: 125px;
+
+  background:
+    rgba(255,255,255,.55);
+
+  transform:
+    rotate(-9deg);
+
+  border-top:
+    2px solid
+    rgba(140,150,140,.3);
+
+  border-bottom:
+    2px solid
+    rgba(140,150,140,.25);
+}
+
+
+.polygon {
+
+  position: absolute;
+
+  border:
+    2px solid #327548;
+
+  background:
+    rgba(50,117,72,.18);
+
+  transform: rotate(-8deg);
+}
+
+
+.p1 {
+
+  width: 145px;
+  height: 90px;
+
+  left: 28%;
+  top: 24%;
+}
+
+
+.p2 {
+
+  width: 120px;
+  height: 80px;
+
+  left: 54%;
+  top: 49%;
+
+  border-color:
+    #aa8b29;
+
+  background:
+    rgba(190,170,60,.18);
+}
+
+
+.p3 {
+
+  width: 130px;
+  height: 85px;
+
+  left: 65%;
+  top: 18%;
+}
+
+
+.pin {
+
+  position: absolute;
+
+  width: 13px;
+  height: 13px;
+
+  border-radius:
+    50% 50% 50% 0;
+
+  background: #b73f36;
+
+  transform: rotate(-45deg);
+
+  box-shadow:
+    0 2px 5px
+    rgba(0,0,0,.2);
+}
+
+
+.pin1 {
+
+  left: 46%;
+  top: 38%;
+}
+
+
+.pin2 {
+
+  left: 59%;
+  top: 58%;
+}
+
+
+.map-label {
+
+  position: absolute;
+
+  top: 12px;
+  left: 12px;
+
+  background:
+    rgba(255,255,255,.92);
+
+  padding:
+    7px 9px;
+
+  border-radius: 6px;
+
+  font-size: 9px;
+
+  z-index: 3;
+}
+
+
+.alert {
+
+  padding:
+    12px 0;
+
+  border-bottom:
+    1px solid #edf0f2;
+}
+
+
+.alert:last-child {
+
+  border-bottom: 0;
+}
+
+
+.alert-title {
+
+  font-size: 11px;
+
+  font-weight: 650;
+}
+
+
+.alert-text {
+
+  font-size: 10px;
+
+  color: #7e8992;
+
+  margin-top: 4px;
+
+  line-height: 1.4;
+}
+
+
+.note {
+
+  padding:
+    11px 13px;
+
+  border-radius: 7px;
+
+  background: #fff8df;
+
+  border:
+    1px solid #eee1ad;
+
+  color: #74652c;
+
+  font-size: 10px;
+
+  line-height: 1.4;
+}
+
+
+.loading {
+
+  padding: 60px;
+
+  text-align: center;
+
+  color: #7c8992;
+}
+
+
+/* RESPONSIVO */
+
+@media(max-width:1000px) {
+
+  .cards {
+
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .grid {
+
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media(max-width:650px) {
+
+  .sidebar {
+
+    display: none;
+  }
+
+  .main {
+
+    padding: 20px 13px;
+  }
+
+  .header {
+
+    padding:
+      0 14px;
+  }
+
+  .cards {
+
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .area {
+
+    grid-template-columns:
+      1fr 65px;
+  }
+
+  .area .metric:nth-child(3) {
+
+    display: none;
+  }
+
+}
+
+</style>
 
 </head>
 
 
 <body>
 
-<div class="app">
 
-  <!-- HEADER -->
+<!-- LOGIN -->
 
-  <header class="header">
+<section
+  id="loginPage"
+  class="login-page"
+>
 
-    <div class="brand">
+  <div class="login-card">
 
-      <div class="brand-icon">
-        🌱
-      </div>
-
-      <div>
-
-        <div class="brand-name">
-          Agro Radar
-        </div>
-
-        <div class="brand-sub">
-          Monitoramento inteligente de áreas
-        </div>
-
-      </div>
-
+    <div class="logo">
+      🌱
     </div>
 
+    <h1 class="login-title">
+      Agro Radar
+    </h1>
 
-    <div class="header-right">
+    <p class="login-subtitle">
+      Monitoramento inteligente de áreas
+      agrícolas e pastagens.
+    </p>
 
-      <div
-        id="fonteBadge"
-        class="demo-badge"
+
+    <form
+      id="loginForm"
+    >
+
+      <input
+        id="senha"
+        class="input"
+        type="password"
+        placeholder="Senha de acesso"
+        autocomplete="current-password"
+        required
       >
-        DADOS DEMONSTRATIVOS
-      </div>
+
+
+      <button
+        class="login-button"
+        type="submit"
+      >
+        Entrar
+      </button>
+
+    </form>
+
+
+    <div
+      id="loginError"
+      class="login-error"
+    ></div>
+
+
+    <div class="demo-note">
+
+      Ambiente demonstrativo.
+      Os indicadores exibidos nesta versão
+      são simulados para validação do produto.
 
     </div>
-
-  </header>
-
-
-  <div class="layout">
-
-    <!-- SIDEBAR -->
-
-    <aside class="sidebar">
-
-      <div class="nav-title">
-        Monitoramento
-      </div>
-
-      <div class="nav-item active">
-
-        <span>◉</span>
-        <span>Dashboard</span>
-
-      </div>
-
-      <div class="nav-item">
-
-        <span>⌖</span>
-        <span>Mapa</span>
-
-      </div>
-
-      <div class="nav-item">
-
-        <span>▦</span>
-        <span>Áreas</span>
-
-      </div>
-
-      <div class="nav-item">
-
-        <span>◒</span>
-        <span>Histórico</span>
-
-      </div>
-
-
-      <div class="nav-title" style="margin-top:30px">
-        Sistema
-      </div>
-
-      <div class="nav-item">
-
-        <span>⚙</span>
-        <span>Configurações</span>
-
-      </div>
-
-    </aside>
-
-
-    <!-- MAIN -->
-
-    <main class="main">
-
-      <div id="appContent">
-
-        <div class="loading">
-
-          <div class="spinner"></div>
-
-          Carregando monitoramento...
-
-        </div>
-
-      </div>
-
-    </main>
 
   </div>
 
+</section>
+
+
+<!-- APP -->
+
+<section id="app">
+
+
+<header class="header">
+
+
+  <div class="brand">
+
+    <div class="brand-icon">
+      🌱
+    </div>
+
+    <div>
+
+      <div class="brand-name">
+        Agro Radar
+      </div>
+
+      <div class="brand-sub">
+        Monitoramento inteligente de áreas
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="header-actions">
+
+    <div
+      id="fonte"
+      class="badge"
+    >
+      DADOS DEMONSTRATIVOS
+    </div>
+
+    <button
+      class="logout"
+      onclick="logout()"
+    >
+      Sair
+    </button>
+
+  </div>
+
+
+</header>
+
+
+<div class="layout">
+
+
+<aside class="sidebar">
+
+  <div class="nav-title">
+    Monitoramento
+  </div>
+
+  <div class="nav-item active">
+    ◉ &nbsp; Dashboard
+  </div>
+
+  <div class="nav-item">
+    ⌖ &nbsp; Mapa
+  </div>
+
+  <div class="nav-item">
+    ▦ &nbsp; Áreas
+  </div>
+
+  <div class="nav-item">
+    ◒ &nbsp; Histórico
+  </div>
+
+
+  <div
+    class="nav-title"
+    style="margin-top:28px"
+  >
+    Sistema
+  </div>
+
+  <div class="nav-item">
+    ⚙ &nbsp; Configurações
+  </div>
+
+</aside>
+
+
+<main class="main">
+
+  <div id="content">
+
+    <div class="loading">
+      Carregando monitoramento...
+    </div>
+
+  </div>
+
+</main>
+
+
 </div>
+
+</section>
+
+
+<!-- IFRAME DE LOGIN -->
+
+<iframe
+  id="loginFrame"
+  name="loginFrame"
+  style="
+    display:none;
+    width:0;
+    height:0;
+    border:0;
+  "
+></iframe>
 
 
 <script>
 
-  let dashboard = null;
+
+/************************************************************
+ * CONFIGURAÇÃO
+ ************************************************************/
 
 
-  /**
-   * Inicialização.
-   */
-  document.addEventListener(
-    'DOMContentLoaded',
-    carregarDashboard
+const API_URL =
+  'https://script.google.com/macros/s/AKfycbxQra1Cv9ZXcaninerkVleUGIXZSSXsbm0IvitVfeWGjdsmjYFHsTO3dMDkXq8vziyj/exec';
+
+
+const SESSION_KEY =
+  'agro_radar_token';
+
+
+let token =
+  sessionStorage.getItem(
+    SESSION_KEY
   );
 
 
-  function carregarDashboard() {
+/************************************************************
+ * LOGIN
+ ************************************************************/
 
-    google.script.run
-      .withSuccessHandler(
-        renderDashboard
-      )
-      .withFailureHandler(
-        renderErro
-      )
-      .obterDashboard();
+
+document
+  .getElementById('loginForm')
+  .addEventListener(
+    'submit',
+    function(event) {
+
+      event.preventDefault();
+
+      realizarLogin();
+
+    }
+  );
+
+
+function realizarLogin() {
+
+  const senha =
+    document
+      .getElementById('senha')
+      .value;
+
+
+  const erro =
+    document
+      .getElementById('loginError');
+
+
+  erro.style.display =
+    'none';
+
+
+  /*
+   * Form POST para o Apps Script.
+   *
+   * O formulário é enviado para um iframe invisível.
+   */
+  const form =
+    document.createElement('form');
+
+
+  form.method =
+    'POST';
+
+  form.action =
+    API_URL;
+
+  form.target =
+    'loginFrame';
+
+
+  const acao =
+    document.createElement('input');
+
+  acao.type =
+    'hidden';
+
+  acao.name =
+    'acao';
+
+  acao.value =
+    'login';
+
+
+  const campoSenha =
+    document.createElement('input');
+
+  campoSenha.type =
+    'hidden';
+
+  campoSenha.name =
+    'senha';
+
+  campoSenha.value =
+    senha;
+
+
+  form.appendChild(
+    acao
+  );
+
+  form.appendChild(
+    campoSenha
+  );
+
+
+  document.body.appendChild(
+    form
+  );
+
+
+  form.submit();
+
+
+  form.remove();
+
+}
+
+
+/************************************************************
+ * RESPOSTA DO LOGIN
+ ************************************************************/
+
+
+window.addEventListener(
+  'message',
+  function(event) {
+
+    /*
+     * Aceitamos somente mensagens
+     * vindas do Apps Script.
+     */
+    if (
+      event.origin !==
+      'https://script.google.com' &&
+      event.origin !==
+      'https://script.googleusercontent.com'
+    ) {
+
+      return;
+    }
+
+
+    const data =
+      event.data;
+
+
+    if (
+      !data ||
+      data.tipo !==
+      'AGRO_RADAR_LOGIN'
+    ) {
+
+      return;
+    }
+
+
+    const resultado =
+      data.resultado;
+
+
+    if (
+      resultado &&
+      resultado.sucesso
+    ) {
+
+      token =
+        resultado.token;
+
+
+      sessionStorage.setItem(
+        SESSION_KEY,
+        token
+      );
+
+
+      mostrarApp();
+
+
+      carregarDashboard();
+
+
+    } else {
+
+      mostrarErroLogin(
+        resultado &&
+        resultado.mensagem
+          ? resultado.mensagem
+          : 'Não foi possível entrar.'
+      );
+
+    }
+
+  }
+);
+
+
+/**
+ * Exibe erro.
+ */
+function mostrarErroLogin(
+  mensagem
+) {
+
+  const erro =
+    document
+      .getElementById(
+        'loginError'
+      );
+
+
+  erro.textContent =
+    mensagem;
+
+
+  erro.style.display =
+    'block';
+}
+
+
+/************************************************************
+ * INICIALIZAÇÃO
+ ************************************************************/
+
+
+window.addEventListener(
+  'DOMContentLoaded',
+  function() {
+
+    if (token) {
+
+      /*
+       * Se já existe token,
+       * valida carregando dashboard.
+       */
+      mostrarApp();
+
+      carregarDashboard();
+
+    }
+
+  }
+);
+
+
+/************************************************************
+ * JSONP
+ ************************************************************/
+
+
+function chamarAPI(
+  api,
+  parametros,
+  sucesso,
+  falha
+) {
+
+  const callback =
+    'agroRadarCallback_' +
+    Date.now() +
+    '_' +
+    Math.floor(
+      Math.random() * 10000
+    );
+
+
+  const params =
+    new URLSearchParams();
+
+
+  params.set(
+    'api',
+    api
+  );
+
+
+  params.set(
+    'token',
+    token || ''
+  );
+
+
+  params.set(
+    'callback',
+    callback
+  );
+
+
+  if (parametros) {
+
+    Object.keys(
+      parametros
+    ).forEach(
+      chave => {
+
+        params.set(
+          chave,
+          parametros[chave]
+        );
+
+      }
+    );
 
   }
 
 
-  function renderDashboard(data) {
-
-    dashboard = data;
-
-    atualizarBadge(data);
-
-    const resumo =
-      data.resumo || {};
-
-    const propriedades =
-      data.propriedades || [];
-
-    const areas =
-      data.areas || [];
-
-    const monitoramentos =
-      data.monitoramentos || [];
-
-    const alertas =
-      data.alertas || [];
+  const script =
+    document.createElement(
+      'script'
+    );
 
 
-    const propriedade =
-      propriedades[0] || {};
+  const timeout =
+    setTimeout(
+      function() {
 
-    const html = `
+        limpar();
+
+        if (falha) {
+
+          falha(
+            'Tempo limite da API.'
+          );
+        }
+
+      },
+      15000
+    );
+
+
+  window[callback] =
+    function(data) {
+
+      clearTimeout(
+        timeout
+      );
+
+      limpar();
+
+
+      if (
+        data &&
+        data.autenticado === false
+      ) {
+
+        sessionStorage.removeItem(
+          SESSION_KEY
+        );
+
+        token = null;
+
+        mostrarLogin();
+
+        return;
+      }
+
+
+      if (sucesso) {
+
+        sucesso(data);
+      }
+
+    };
+
+
+  function limpar() {
+
+    try {
+
+      script.remove();
+
+    } catch (e) {}
+
+
+    try {
+
+      delete window[callback];
+
+    } catch (e) {}
+
+  }
+
+
+  script.src =
+    API_URL +
+    '?' +
+    params.toString();
+
+
+  document.body.appendChild(
+    script
+  );
+}
+
+
+/************************************************************
+ * DASHBOARD
+ ************************************************************/
+
+
+function carregarDashboard() {
+
+  chamarAPI(
+
+    'dashboard',
+
+    null,
+
+    renderDashboard,
+
+    function(erro) {
+
+      document
+        .getElementById(
+          'content'
+        )
+        .innerHTML = `
+
+          <div class="card">
+
+            Não foi possível carregar
+            o monitoramento.
+
+            <br><br>
+
+            <small>
+              ${erro}
+            </small>
+
+          </div>
+
+        `;
+
+    }
+
+  );
+
+}
+
+
+/************************************************************
+ * RENDER
+ ************************************************************/
+
+
+function renderDashboard(
+  data
+) {
+
+  if (
+    !data ||
+    !data.sucesso
+  ) {
+
+    mostrarLogin();
+
+    return;
+  }
+
+
+  const resumo =
+    data.resumo || {};
+
+
+  const propriedades =
+    data.propriedades || [];
+
+
+  const areas =
+    data.areas || [];
+
+
+  const monitoramentos =
+    data.monitoramentos || [];
+
+
+  const alertas =
+    data.alertas || [];
+
+
+  const propriedade =
+    propriedades[0] || {};
+
+
+  const fonte =
+    data.fonteDados ||
+    'DEMO';
+
+
+  document
+    .getElementById(
+      'fonte'
+    )
+    .textContent =
+      fonte === 'DEMO'
+        ? 'DADOS DEMONSTRATIVOS'
+        : fonte;
+
+
+  document
+    .getElementById(
+      'content'
+    )
+    .innerHTML = `
 
       <h1 class="page-title">
         Visão geral
       </h1>
 
       <p class="page-description">
-        Acompanhe a condição das áreas monitoradas
-        e identifique alterações que merecem atenção.
+        Acompanhe a condição das áreas
+        monitoradas e identifique alterações
+        que merecem atenção.
       </p>
 
 
-      <!-- CARDS -->
-
       <div class="cards">
+
 
         <div class="card">
 
@@ -938,7 +1718,7 @@
           </div>
 
           <div class="card-value">
-            ${formatarNumero(
+            ${numero(
               resumo.ndviMedio,
               2
             )}
@@ -967,101 +1747,77 @@
 
         </div>
 
+
       </div>
 
 
-      <!-- PROPRIEDADE + MAPA -->
-
-      <div class="grid-2">
+      <div class="grid">
 
 
-        <section class="section-card">
+        <section class="section">
 
           <div class="section-header">
-
-            <div class="section-title">
-              Propriedade
-            </div>
-
-            <button
-              class="button secondary"
-              onclick="alert('A criação pelo mapa será ativada na próxima etapa.')"
-            >
-              + Nova área
-            </button>
-
+            Propriedade
           </div>
 
+          <div class="section-body">
 
-          <div class="section-content">
 
-            <div class="property-head">
+            <div class="property">
 
               <div>
 
                 <div class="property-name">
-                  ${propriedade.NOME || 'Nenhuma propriedade'}
+                  ${propriedade.NOME || '—'}
                 </div>
 
                 <div class="property-location">
+
                   ${propriedade.CIDADE || ''}
-                  ${propriedade.UF ? ' — ' + propriedade.UF : ''}
+
+                  ${
+                    propriedade.UF
+                      ? ' — ' +
+                        propriedade.UF
+                      : ''
+                  }
+
                 </div>
 
               </div>
 
 
-              <div class="property-area">
+              <div class="property-ha">
 
-                <strong>
-                  ${formatarNumero(
-                    propriedade.AREA_HA,
-                    1
-                  )} ha
-                </strong>
+                ${numero(
+                  propriedade.AREA_HA,
+                  1
+                )} ha
 
-                <span>
+                <small>
                   área cadastrada
-                </span>
+                </small>
 
               </div>
 
             </div>
 
 
-            <div class="area-list">
-
-              ${renderAreas(
-                areas,
-                monitoramentos
-              )}
-
-            </div>
+            ${renderAreas(
+              areas,
+              monitoramentos
+            )}
 
           </div>
 
         </section>
 
 
-        <section class="section-card">
+        <section class="section">
 
           <div class="section-header">
-
-            <div class="section-title">
-              Localização
-            </div>
-
-            <span
-              style="
-                font-size:10px;
-                color:#84909a;
-              "
-            >
-              Áreas monitoradas
-            </span>
-
+            Localização
           </div>
-
 
           <div class="map">
 
@@ -1069,52 +1825,36 @@
               Fazenda Boa Vista · ES
             </div>
 
-            <div class="polygon one"></div>
-            <div class="polygon two"></div>
-            <div class="polygon three"></div>
+            <div class="map-road"></div>
 
-            <div class="pin one"></div>
-            <div class="pin two"></div>
+            <div class="polygon p1"></div>
 
-            <div class="map-legend">
-              🟢 condição normal
-              &nbsp;&nbsp;
-              🟡 monitorar
-            </div>
+            <div class="polygon p2"></div>
+
+            <div class="polygon p3"></div>
+
+            <div class="pin pin1"></div>
+
+            <div class="pin pin2"></div>
 
           </div>
 
         </section>
 
+
       </div>
 
 
-      <!-- HISTÓRICO + ALERTAS -->
-
-      <div class="grid-2">
+      <div class="grid">
 
 
-        <section class="section-card">
+        <section class="section">
 
           <div class="section-header">
-
-            <div class="section-title">
-              Evolução do NDVI
-            </div>
-
-            <span
-              style="
-                font-size:10px;
-                color:#84909a;
-              "
-            >
-              Últimas observações
-            </span>
-
+            Evolução do NDVI
           </div>
 
-
-          <div class="section-content">
+          <div class="section-body">
 
             ${renderChart(
               monitoramentos
@@ -1125,29 +1865,15 @@
         </section>
 
 
-        <section class="section-card">
+        <section class="section">
 
           <div class="section-header">
-
-            <div class="section-title">
-              Alertas
-            </div>
-
-            <span
-              style="
-                font-size:10px;
-                color:#84909a;
-              "
-            >
-              ${alertas.length} registros
-            </span>
-
+            Alertas
           </div>
 
+          <div class="section-body">
 
-          <div class="section-content">
-
-            ${renderAlertas(
+            ${renderAlerts(
               alertas,
               areas
             )}
@@ -1156,142 +1882,225 @@
 
         </section>
 
+
       </div>
 
 
-      <div class="data-note">
+      <div class="note">
 
-        <strong>Dados demonstrativos.</strong>
-        Esta versão valida a experiência e a arquitetura
-        do Agro Radar utilizando dados simulados.
-        A integração futura com Sentinel-2 substituirá
-        esta camada por observações reais de satélite.
+        <strong>
+          Dados demonstrativos.
+        </strong>
+
+        Os indicadores desta versão são
+        simulados para validação da experiência
+        e arquitetura do Agro Radar.
+
+        A integração futura com Sentinel-2
+        substituirá esta camada por dados reais.
 
       </div>
 
     `;
 
+}
 
-    document
-      .getElementById('appContent')
-      .innerHTML = html;
 
+/************************************************************
+ * ÁREAS
+ ************************************************************/
+
+
+function renderAreas(
+  areas,
+  monitoramentos
+) {
+
+  if (!areas.length) {
+
+    return `
+      <div class="loading">
+        Nenhuma área cadastrada.
+      </div>
+    `;
   }
 
 
-  function renderAreas(
-    areas,
-    monitoramentos
-  ) {
+  return areas.map(
+    area => {
 
-    if (!areas.length) {
+      const registros =
+        monitoramentos.filter(
+          r =>
+            String(r.ID_AREA) ===
+            String(area.ID_AREA)
+        );
+
+
+      const ultimo =
+        registros.length
+          ? registros[
+              registros.length - 1
+            ]
+          : null;
+
+
+      const ndvi =
+        ultimo
+          ? ultimo.NDVI
+          : null;
+
+
+      const variacao =
+        ultimo
+          ? ultimo.VARIACAO_NDVI
+          : null;
+
+
+      const status =
+        ultimo
+          ? ultimo.STATUS
+          : 'NORMAL';
+
 
       return `
-        <div style="
-          padding:25px;
-          text-align:center;
-          color:#87939c;
-          font-size:12px;
-        ">
-          Nenhuma área cadastrada.
+
+        <div class="area">
+
+
+          <div>
+
+            <div class="area-name">
+              ${area.NOME_AREA}
+            </div>
+
+            <div class="area-type">
+
+              ${area.TIPO_AREA || ''}
+
+              ${
+                area.CULTURA
+                  ? ' · ' +
+                    area.CULTURA
+                  : ''
+              }
+
+            </div>
+
+          </div>
+
+
+          <div class="metric">
+
+            <small>
+              NDVI
+            </small>
+
+            ${numero(
+              ndvi,
+              2
+            )}
+
+          </div>
+
+
+          <div class="metric">
+
+            <small>
+              Variação
+            </small>
+
+            ${variacaoNumero(
+              variacao
+            )}
+
+          </div>
+
+
+          <div style="
+            text-align:right;
+          ">
+
+            <span
+              class="
+                status
+                ${classeStatus(
+                  status
+                )}
+              "
+            >
+              ${status}
+            </span>
+
+          </div>
+
+
         </div>
+
       `;
+
     }
+  ).join('');
+
+}
 
 
-    return areas.map(
-      area => {
+/************************************************************
+ * ALERTAS
+ ************************************************************/
 
-        const registros =
-          monitoramentos.filter(
-            r =>
-              String(r.ID_AREA) ===
-              String(area.ID_AREA)
+
+function renderAlerts(
+  alertas,
+  areas
+) {
+
+  if (!alertas.length) {
+
+    return `
+      <div class="loading">
+        Nenhum alerta.
+      </div>
+    `;
+  }
+
+
+  return alertas
+    .slice(0,4)
+    .map(
+      alerta => {
+
+        const area =
+          areas.find(
+            a =>
+              String(
+                a.ID_AREA
+              ) ===
+              String(
+                alerta.ID_AREA
+              )
           );
-
-
-        const ultimo =
-          registros.length
-            ? registros[
-                registros.length - 1
-              ]
-            : null;
-
-
-        const status =
-          ultimo
-            ? ultimo.STATUS
-            : 'NORMAL';
-
-
-        const ndvi =
-          ultimo
-            ? ultimo.NDVI
-            : '—';
-
-
-        const variacao =
-          ultimo
-            ? ultimo.VARIACAO_NDVI
-            : '—';
 
 
         return `
 
-          <div class="area-row">
+          <div class="alert">
 
-            <div>
+            <div class="alert-title">
 
-              <div class="area-name">
-                ${area.NOME_AREA}
-              </div>
+              ${area
+                ? area.NOME_AREA
+                : 'Área monitorada'}
 
-              <div class="area-type">
-                ${area.TIPO_AREA || ''}
-                ${area.CULTURA
-                  ? ' · ' + area.CULTURA
-                  : ''}
-              </div>
+              ·
+
+              ${alerta.INDICADOR}
 
             </div>
 
+            <div class="alert-text">
 
-            <div class="metric">
-
-              <small>
-                NDVI
-              </small>
-
-              ${formatarNumero(
-                ndvi,
-                2
-              )}
-
-            </div>
-
-
-            <div class="metric">
-
-              <small>
-                Variação
-              </small>
-
-              ${formatarVariacao(
-                variacao
-              )}
-
-            </div>
-
-
-            <div style="text-align:right">
-
-              <span class="status ${
-                classeStatus(status)
-              }">
-
-                ${status}
-
-              </span>
+              ${alerta.MENSAGEM}
 
             </div>
 
@@ -1300,70 +2109,81 @@
         `;
 
       }
-    ).join('');
+    )
+    .join('');
 
+}
+
+
+/************************************************************
+ * GRÁFICO
+ ************************************************************/
+
+
+function renderChart(
+  monitoramentos
+) {
+
+  if (!monitoramentos.length) {
+
+    return `
+      <div class="loading">
+        Sem histórico.
+      </div>
+    `;
   }
 
 
-  function renderChart(
+  const idArea =
+    monitoramentos[0].ID_AREA;
+
+
+  const registros =
     monitoramentos
-  ) {
-
-    if (!monitoramentos.length) {
-
-      return `
-        <div class="loading">
-          Sem dados históricos.
-        </div>
-      `;
-    }
-
-
-    /*
-     * Para a apresentação:
-     * usamos a primeira área.
-     */
-    const idArea =
-      monitoramentos[0].ID_AREA;
-
-
-    const registros =
-      monitoramentos
-        .filter(
-          r =>
-            String(r.ID_AREA) ===
-            String(idArea)
-        )
-        .slice(-6);
-
-
-    const valores =
-      registros.map(
+      .filter(
         r =>
-          Number(r.NDVI)
-      );
+          String(r.ID_AREA) ===
+          String(idArea)
+      )
+      .slice(-6);
 
 
-    const max =
-      Math.max(
-        ...valores,
-        0.8
-      );
+  const valores =
+    registros.map(
+      r =>
+        Number(r.NDVI)
+    );
 
 
-    const min =
-      Math.min(
-        ...valores,
-        0.4
-      );
+  const max =
+    Math.max(
+      ...valores,
+      .8
+    );
 
 
-    const faixa =
-      max - min || 0.1;
+  const min =
+    Math.min(
+      ...valores,
+      .4
+    );
 
 
-    const barras =
-      registros.map(
+  const faixa =
+    max - min || .1;
+
+
+  return `
+
+    <div style="
+      height:220px;
+      display:flex;
+      align-items:flex-end;
+      gap:10px;
+      padding:20px 10px;
+    ">
+
+      ${registros.map(
         r => {
 
           const altura =
@@ -1375,26 +2195,35 @@
               ) /
               faixa
             ) *
-            150;
-
-
-          const data =
-            formatarData(
-              r.DATA_IMAGEM
-            );
+            140;
 
 
           return `
 
-            <div
-              class="bar"
-              style="
-                height:${altura}px
-              "
-            >
+            <div style="
+              flex:1;
+              height:${altura}px;
+              max-width:48px;
+              background:#3f7d53;
+              border-radius:5px 5px 0 0;
+              position:relative;
+            ">
 
-              <span>
-                ${data}
+              <span style="
+                position:absolute;
+                bottom:-20px;
+                left:50%;
+                transform:
+                  translateX(-50%);
+                font-size:8px;
+                color:#89949d;
+                white-space:nowrap;
+              ">
+
+                ${dataCurta(
+                  r.DATA_IMAGEM
+                )}
+
               </span>
 
             </div>
@@ -1402,304 +2231,219 @@
           `;
 
         }
-      ).join('');
+      ).join('')}
+
+    </div>
+
+  `;
+
+}
 
 
-    return `
-
-      <div class="chart">
-
-        <div class="chart-grid">
-
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-
-        </div>
-
-        ${barras}
-
-      </div>
-
-    `;
-
-  }
+/************************************************************
+ * UTILITÁRIOS
+ ************************************************************/
 
 
-  function renderAlertas(
-    alertas,
-    areas
+function numero(
+  valor,
+  casas
+) {
+
+  if (
+    valor === null ||
+    valor === undefined ||
+    valor === '' ||
+    isNaN(Number(valor))
   ) {
 
-    if (!alertas.length) {
-
-      return `
-        <div style="
-          text-align:center;
-          padding:30px;
-          color:#87939c;
-          font-size:12px;
-        ">
-          Nenhum alerta.
-        </div>
-      `;
-    }
-
-
-    return alertas
-      .slice(0, 4)
-      .map(
-        alerta => {
-
-          const area =
-            areas.find(
-              a =>
-                String(a.ID_AREA) ===
-                String(alerta.ID_AREA)
-            );
-
-
-          return `
-
-            <div class="alert">
-
-              <div class="alert-icon">
-                !
-              </div>
-
-              <div>
-
-                <div class="alert-title">
-
-                  ${area
-                    ? area.NOME_AREA
-                    : 'Área monitorada'}
-
-                  ·
-
-                  ${alerta.INDICADOR}
-
-                </div>
-
-                <div class="alert-text">
-
-                  ${alerta.MENSAGEM}
-
-                </div>
-
-              </div>
-
-            </div>
-
-          `;
-
-        }
-      )
-      .join('');
-
+    return '—';
   }
 
 
-  function atualizarBadge(data) {
-
-    const badge =
-      document.getElementById(
-        'fonteBadge'
-      );
-
-
-    if (
-      data.fonteDados ===
-      'SENTINEL-2'
-    ) {
-
-      badge.textContent =
-        'SENTINEL-2';
-
-      badge.style.background =
-        '#e7f4eb';
-
-      badge.style.color =
-        '#28623b';
-
-    } else {
-
-      badge.textContent =
-        'DADOS DEMONSTRATIVOS';
-
-    }
-
-  }
-
-
-  function classeStatus(status) {
-
-    const s =
-      String(status)
-        .toUpperCase();
-
-
-    if (
-      s.includes('ATEN')
-    ) {
-
-      return 'atencao';
-
-    }
-
-
-    if (
-      s.includes('MONITOR')
-    ) {
-
-      return 'monitorar';
-
-    }
-
-
-    return 'normal';
-
-  }
-
-
-  function formatarNumero(
-    valor,
-    casas
-  ) {
-
-    if (
-      valor === null ||
-      valor === undefined ||
-      valor === '' ||
-      isNaN(Number(valor))
-    ) {
-
-      return '—';
-
-    }
-
-
-    return Number(valor)
-      .toLocaleString(
-        'pt-BR',
-        {
-          minimumFractionDigits:
-            casas,
-
-          maximumFractionDigits:
-            casas
-        }
-      );
-
-  }
-
-
-  function formatarVariacao(
-    valor
-  ) {
-
-    if (
-      valor === null ||
-      valor === undefined ||
-      valor === '' ||
-      isNaN(Number(valor))
-    ) {
-
-      return '—';
-
-    }
-
-
-    const n =
-      Number(valor);
-
-
-    return (
-      n > 0 ? '+' : ''
-    ) +
-    n.toLocaleString(
+  return Number(valor)
+    .toLocaleString(
       'pt-BR',
       {
-        minimumFractionDigits: 1,
-        maximumFractionDigits: 1
-      }
-    ) +
-    '%';
+        minimumFractionDigits:
+          casas,
 
-  }
-
-
-  function formatarData(
-    valor
-  ) {
-
-    if (!valor) {
-      return '';
-    }
-
-
-    const data =
-      new Date(valor);
-
-
-    if (
-      isNaN(
-        data.getTime()
-      )
-    ) {
-
-      return '';
-
-    }
-
-
-    return data.toLocaleDateString(
-      'pt-BR',
-      {
-        day: '2-digit',
-        month: '2-digit'
+        maximumFractionDigits:
+          casas
       }
     );
+}
 
-  }
 
+function variacaoNumero(
+  valor
+) {
 
-  function renderErro(
-    erro
+  if (
+    valor === null ||
+    valor === undefined ||
+    valor === '' ||
+    isNaN(Number(valor))
   ) {
 
-    document
-      .getElementById(
-        'appContent'
-      )
-      .innerHTML = `
-
-        <div class="card">
-
-          <h2>
-            Não foi possível carregar o Agro Radar
-          </h2>
-
-          <p style="
-            color:#78848d;
-            font-size:13px;
-          ">
-            ${erro.message || erro}
-          </p>
-
-          <button
-            class="button"
-            onclick="carregarDashboard()"
-          >
-            Tentar novamente
-          </button>
-
-        </div>
-
-      `;
-
+    return '—';
   }
+
+
+  const n =
+    Number(valor);
+
+
+  return (
+    n > 0 ? '+' : ''
+  ) +
+  n.toLocaleString(
+    'pt-BR',
+    {
+      minimumFractionDigits:1,
+      maximumFractionDigits:1
+    }
+  ) +
+  '%';
+}
+
+
+function classeStatus(
+  status
+) {
+
+  const s =
+    String(status)
+      .toUpperCase();
+
+
+  if (
+    s.includes('ATEN')
+  ) {
+
+    return 'atencao';
+  }
+
+
+  if (
+    s.includes('MONITOR')
+  ) {
+
+    return 'monitorar';
+  }
+
+
+  return 'normal';
+}
+
+
+function dataCurta(
+  valor
+) {
+
+  const d =
+    new Date(valor);
+
+
+  if (
+    isNaN(
+      d.getTime()
+    )
+  ) {
+
+    return '';
+  }
+
+
+  return d.toLocaleDateString(
+    'pt-BR',
+    {
+      day:'2-digit',
+      month:'2-digit'
+    }
+  );
+}
+
+
+/************************************************************
+ * UI
+ ************************************************************/
+
+
+function mostrarApp() {
+
+  document
+    .getElementById(
+      'loginPage'
+    )
+    .style.display =
+      'none';
+
+
+  document
+    .getElementById(
+      'app'
+    )
+    .style.display =
+      'block';
+}
+
+
+function mostrarLogin() {
+
+  token = null;
+
+  sessionStorage.removeItem(
+    SESSION_KEY
+  );
+
+
+  document
+    .getElementById(
+      'app'
+    )
+    .style.display =
+      'none';
+
+
+  document
+    .getElementById(
+      'loginPage'
+    )
+    .style.display =
+      'flex';
+}
+
+
+function logout() {
+
+  if (!token) {
+
+    mostrarLogin();
+
+    return;
+  }
+
+
+  /*
+   * Logout pode ser feito por GET.
+   */
+  chamarAPI(
+    'logout',
+    null,
+    function() {
+
+      mostrarLogin();
+
+    },
+    function() {
+
+      mostrarLogin();
+
+    }
+  );
+
+}
 
 </script>
 
