@@ -10,17 +10,23 @@
   content="width=device-width,initial-scale=1"
 >
 
-<title>Agro Radar</title>
+<title>Agro Radar · Future Tech Leader Brazil</title>
 
 
 <style>
+
+/************************************************************
+ * BASE
+ ************************************************************/
 
 * {
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  min-height: 100%;
 
   font-family:
     Inter,
@@ -29,12 +35,14 @@ body {
     "Segoe UI",
     sans-serif;
 
-  background: #f4f6f8;
   color: #17212b;
+  background: #f4f6f8;
 }
 
 
-/* LOGIN */
+/************************************************************
+ * LOGIN
+ ************************************************************/
 
 .login-page {
 
@@ -46,44 +54,184 @@ body {
 
   justify-content: center;
 
-  padding: 20px;
+  padding: 30px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 78% 20%,
+      rgba(31,102,164,.28),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 15% 80%,
+      rgba(16,74,120,.25),
+      transparent 38%
+    ),
+    linear-gradient(
+      135deg,
+      #061426 0%,
+      #0a2038 48%,
+      #082b49 100%
+    );
 }
 
 
-.login-card {
+/*
+ * Elementos decorativos.
+ */
 
-  width: 390px;
+.login-page::before {
 
-  background: white;
+  content: "";
+
+  position: absolute;
+
+  width: 700px;
+  height: 700px;
+
+  right: -260px;
+  top: -310px;
 
   border:
-    1px solid #e3e7ea;
+    1px solid
+    rgba(255,255,255,.08);
 
-  border-radius: 16px;
-
-  padding: 38px;
+  border-radius: 50%;
 
   box-shadow:
-    0 12px 40px
-    rgba(20,30,40,.08);
-
-  text-align: center;
+    0 0 0 80px
+      rgba(255,255,255,.015),
+    0 0 0 160px
+      rgba(255,255,255,.012);
 }
 
 
-.logo {
+.login-page::after {
 
-  width: 52px;
-  height: 52px;
+  content: "";
 
-  margin:
-    0 auto 16px;
+  position: absolute;
 
-  border-radius: 13px;
+  width: 420px;
+  height: 420px;
 
-  background: #173f2a;
+  left: -260px;
+  bottom: -250px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.06);
+
+  border-radius: 50%;
+}
+
+
+/************************************************************
+ * LOGIN CONTAINER
+ ************************************************************/
+
+.login-container {
+
+  width: min(
+    1040px,
+    100%
+  );
+
+  min-height: 620px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.08fr .92fr;
+
+  position: relative;
+
+  z-index: 2;
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  background:
+    rgba(255,255,255,.055);
+
+  backdrop-filter:
+    blur(18px);
+
+  box-shadow:
+    0 35px 90px
+    rgba(0,0,0,.30);
+}
+
+
+/************************************************************
+ * LOGIN LADO INSTITUCIONAL
+ ************************************************************/
+
+.login-institutional {
+
+  padding:
+    58px 54px;
 
   color: white;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.06),
+      rgba(255,255,255,.015)
+    );
+}
+
+
+.institutional-top {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+
+.institution-logo {
+
+  height: 48px;
+
+  width: auto;
+
+  max-width: 155px;
+
+  object-fit: contain;
+}
+
+
+.institution-divider {
+
+  width: 1px;
+
+  height: 38px;
+
+  background:
+    rgba(255,255,255,.22);
+}
+
+
+.undp-mark {
 
   display: flex;
 
@@ -91,7 +239,201 @@ body {
 
   justify-content: center;
 
+  height: 45px;
+
+  min-width: 105px;
+
+  padding: 0 10px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.18);
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: 750;
+
+  letter-spacing: .5px;
+}
+
+
+.undp-mark span {
+
+  display: block;
+
+  font-size: 8px;
+
+  font-weight: 450;
+
+  letter-spacing: .7px;
+
+  opacity: .78;
+
+  margin-left: 6px;
+}
+
+
+.program {
+
+  margin-top: 65px;
+
+  max-width: 560px;
+}
+
+
+.program-kicker {
+
+  font-size: 10px;
+
+  letter-spacing:
+    1.7px;
+
+  text-transform:
+    uppercase;
+
+  color:
+    rgba(255,255,255,.58);
+
+  margin-bottom: 17px;
+}
+
+
+.program-title {
+
+  font-size: 28px;
+
+  line-height: 1.25;
+
+  letter-spacing:
+    -.6px;
+
+  font-weight: 650;
+
+  margin: 0;
+
+  max-width: 520px;
+}
+
+
+.program-title strong {
+
+  font-weight: 800;
+}
+
+
+.program-line {
+
+  width: 55px;
+
+  height: 3px;
+
+  margin:
+    25px 0;
+
+  background:
+    #5bb6e6;
+
+  border-radius: 5px;
+}
+
+
+.program-description {
+
+  max-width: 490px;
+
+  margin: 0;
+
+  color:
+    rgba(255,255,255,.68);
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+.project-label {
+
+  margin-top: 42px;
+
+  color:
+    rgba(255,255,255,.42);
+
+  font-size: 9px;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    1.4px;
+}
+
+
+.project-name {
+
+  margin-top: 7px;
+
   font-size: 25px;
+
+  font-weight: 750;
+
+  letter-spacing:
+    -.4px;
+}
+
+
+.institutional-footer {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  color:
+    rgba(255,255,255,.48);
+
+  font-size: 9px;
+
+  line-height: 1.5;
+}
+
+
+/************************************************************
+ * LOGIN CARD
+ ************************************************************/
+
+.login-access {
+
+  background:
+    rgba(255,255,255,.975);
+
+  padding:
+    55px 48px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+
+.access-label {
+
+  font-size: 9px;
+
+  letter-spacing:
+    1.5px;
+
+  text-transform:
+    uppercase;
+
+  color: #75828c;
+
+  margin-bottom: 12px;
 }
 
 
@@ -99,22 +441,41 @@ body {
 
   margin: 0;
 
-  font-size: 25px;
+  color: #10243a;
 
-  font-weight: 700;
+  font-size: 30px;
+
+  font-weight: 750;
+
+  letter-spacing:
+    -.7px;
 }
 
 
 .login-subtitle {
 
-  color: #78848d;
+  color: #7a8790;
 
-  font-size: 13px;
+  font-size: 12px;
 
-  line-height: 1.5;
+  line-height: 1.6;
 
   margin:
-    8px 0 25px;
+    9px 0 30px;
+}
+
+
+.input-label {
+
+  display: block;
+
+  font-size: 10px;
+
+  font-weight: 650;
+
+  color: #52606b;
+
+  margin-bottom: 7px;
 }
 
 
@@ -122,30 +483,34 @@ body {
 
   width: 100%;
 
-  height: 44px;
+  height: 46px;
 
   border:
-    1px solid #dce1e5;
+    1px solid #dce2e6;
 
   border-radius: 8px;
 
   padding:
     0 13px;
 
-  font-size: 14px;
+  font-size: 13px;
 
   outline: none;
+
+  transition:
+    border .2s,
+    box-shadow .2s;
 }
 
 
 .input:focus {
 
   border-color:
-    #173f2a;
+    #145b8a;
 
   box-shadow:
     0 0 0 3px
-    rgba(23,63,42,.08);
+    rgba(20,91,138,.09);
 }
 
 
@@ -153,29 +518,57 @@ body {
 
   width: 100%;
 
-  height: 44px;
+  height: 46px;
 
-  margin-top: 12px;
+  margin-top: 13px;
 
   border: 0;
 
   border-radius: 8px;
 
-  background: #173f2a;
+  background:
+    linear-gradient(
+      135deg,
+      #0a3558,
+      #145f8d
+    );
 
   color: white;
 
-  font-size: 13px;
+  font-size: 12px;
 
-  font-weight: 650;
+  font-weight: 700;
 
   cursor: pointer;
+
+  transition:
+    transform .15s,
+    box-shadow .15s,
+    opacity .15s;
 }
 
 
 .login-button:hover {
 
-  opacity: .92;
+  opacity: .94;
+
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 8px 20px
+    rgba(10,53,88,.18);
+}
+
+
+.login-button:disabled {
+
+  opacity: .55;
+
+  cursor:
+    wait;
+
+  transform: none;
 }
 
 
@@ -185,7 +578,7 @@ body {
 
   margin-top: 12px;
 
-  padding: 9px;
+  padding: 10px;
 
   border-radius: 7px;
 
@@ -193,7 +586,9 @@ body {
 
   color: #963a36;
 
-  font-size: 11px;
+  font-size: 10px;
+
+  line-height: 1.4;
 }
 
 
@@ -201,21 +596,123 @@ body {
 
   margin-top: 22px;
 
-  padding: 10px;
+  padding:
+    11px 12px;
 
   border-radius: 7px;
 
-  background: #fff8df;
+  background: #f5f7f8;
 
-  color: #75652d;
+  color: #77838c;
 
-  font-size: 10px;
+  font-size: 9px;
 
-  line-height: 1.4;
+  line-height: 1.5;
+
+  border:
+    1px solid #e8ecef;
 }
 
 
-/* APP */
+.credentials {
+
+  margin-top: 35px;
+
+  padding-top: 18px;
+
+  border-top:
+    1px solid #edf0f2;
+
+  color: #8b969e;
+
+  font-size: 9px;
+
+  line-height: 1.7;
+}
+
+
+.credentials strong {
+
+  color: #53616b;
+
+  font-weight: 650;
+}
+
+
+/************************************************************
+ * RESPONSIVO LOGIN
+ ************************************************************/
+
+@media(max-width:820px) {
+
+  .login-container {
+
+    grid-template-columns: 1fr;
+
+    min-height: auto;
+  }
+
+  .login-institutional {
+
+    padding:
+      35px 30px;
+
+  }
+
+  .program {
+
+    margin-top: 35px;
+  }
+
+  .institutional-footer {
+
+    margin-top: 35px;
+  }
+
+  .login-access {
+
+    padding:
+      38px 30px;
+  }
+
+}
+
+
+@media(max-width:500px) {
+
+  .login-page {
+
+    padding: 14px;
+  }
+
+  .login-container {
+
+    border-radius: 17px;
+  }
+
+  .login-institutional {
+
+    padding:
+      30px 24px;
+  }
+
+  .login-access {
+
+    padding:
+      34px 24px;
+  }
+
+  .program-title {
+
+    font-size: 23px;
+  }
+
+}
+
+
+/************************************************************
+ * APP
+ ************************************************************/
 
 #app {
 
@@ -261,7 +758,8 @@ body {
 
   border-radius: 10px;
 
-  background: #173f2a;
+  background:
+    #0b3657;
 
   color: white;
 
@@ -270,6 +768,8 @@ body {
   align-items: center;
 
   justify-content: center;
+
+  font-size: 17px;
 }
 
 
@@ -350,7 +850,8 @@ body {
 
   width: 210px;
 
-  background: #173f2a;
+  background:
+    #0b3657;
 
   color: white;
 
@@ -791,7 +1292,8 @@ body {
 
   background: #b73f36;
 
-  transform: rotate(-45deg);
+  transform:
+    rotate(-45deg);
 
   box-shadow:
     0 2px 5px
@@ -900,7 +1402,9 @@ body {
 }
 
 
-/* RESPONSIVO */
+/************************************************************
+ * RESPONSIVO APP
+ ************************************************************/
 
 @media(max-width:1000px) {
 
@@ -963,73 +1467,246 @@ body {
 <body>
 
 
-<!-- LOGIN -->
+<!-- =======================================================
+     LOGIN
+======================================================== -->
+
 
 <section
   id="loginPage"
   class="login-page"
 >
 
-  <div class="login-card">
 
-    <div class="logo">
-      🌱
+  <div class="login-container">
+
+
+    <!-- INSTITUCIONAL -->
+
+    <div class="login-institutional">
+
+
+      <div>
+
+
+        <div class="institutional-top">
+
+
+          <!-- Logo oficial AEB -->
+
+          <img
+            class="institution-logo"
+            src="https://www.gov.br/aeb/pt-br/media/logoaeb.png"
+            alt="Agência Espacial Brasileira"
+          >
+
+
+          <div class="institution-divider"></div>
+
+
+          <!-- Identificação UNDP -->
+
+          <div class="undp-mark">
+
+            UNDP
+
+            <span>
+              United Nations<br>
+              Development Programme
+            </span>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="program">
+
+
+          <div class="program-kicker">
+
+            1ª TURMA · FUTURE TECH LEADER BRAZIL
+
+          </div>
+
+
+          <h2 class="program-title">
+
+            <strong>
+              AGÊNCIA ESPACIAL BRASILEIRA
+            </strong>
+
+            <br>
+
+            · UNITED NATIONS DEVELOPMENT PROGRAMME
+
+          </h2>
+
+
+          <div class="program-line"></div>
+
+
+          <p class="program-description">
+
+            Formação e desenvolvimento de soluções
+            tecnológicas aplicadas ao futuro,
+            utilizando dados e tecnologias espaciais
+            para transformar informação em capacidade
+            de decisão.
+
+          </p>
+
+
+          <div class="project-label">
+
+            Projeto empreendedor
+
+          </div>
+
+
+          <div class="project-name">
+
+            Agro Radar
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <div class="institutional-footer">
+
+        <div>
+          Leader · Bruno Rodrigo dos Santos Vieira
+        </div>
+
+        <div>
+          Future Tech Leader Brazil · 1ª Turma
+        </div>
+
+      </div>
+
+
     </div>
 
-    <h1 class="login-title">
-      Agro Radar
-    </h1>
 
-    <p class="login-subtitle">
-      Monitoramento inteligente de áreas
-      agrícolas e pastagens.
-    </p>
+    <!-- ACESSO -->
+
+    <div class="login-access">
 
 
-    <form
-      id="loginForm"
-    >
+      <div class="access-label">
+        Ambiente de demonstração
+      </div>
 
-      <input
-        id="senha"
-        class="input"
-        type="password"
-        placeholder="Senha de acesso"
-        autocomplete="current-password"
-        required
+
+      <h1 class="login-title">
+        Agro Radar
+      </h1>
+
+
+      <p class="login-subtitle">
+
+        Monitoramento inteligente de áreas
+        agrícolas e pastagens por meio de
+        dados de observação da Terra.
+
+      </p>
+
+
+      <form
+        id="loginForm"
       >
 
 
-      <button
-        class="login-button"
-        type="submit"
-      >
-        Entrar
-      </button>
-
-    </form>
+        <label
+          class="input-label"
+          for="senha"
+        >
+          Senha de acesso
+        </label>
 
 
-    <div
-      id="loginError"
-      class="login-error"
-    ></div>
+        <input
+          id="senha"
+          class="input"
+          type="password"
+          placeholder="Digite sua senha"
+          autocomplete="current-password"
+          required
+        >
 
 
-    <div class="demo-note">
+        <button
+          id="loginButton"
+          class="login-button"
+          type="submit"
+        >
+          Entrar
+        </button>
 
-      Ambiente demonstrativo.
-      Os indicadores exibidos nesta versão
-      são simulados para validação do produto.
+
+      </form>
+
+
+      <div
+        id="loginError"
+        class="login-error"
+      ></div>
+
+
+      <div class="demo-note">
+
+        <strong>
+          Ambiente demonstrativo.
+        </strong>
+
+        Os indicadores exibidos nesta versão
+        são simulados para validação do conceito.
+        A integração com dados reais de satélite
+        será incorporada posteriormente.
+
+      </div>
+
+
+      <div class="credentials">
+
+        <div>
+          <strong>Leader</strong>
+          · Bruno Rodrigo dos Santos Vieira
+        </div>
+
+        <div>
+          brunorsvieira@gmail.com
+        </div>
+
+        <div>
+          Professor Dana Redford
+        </div>
+
+        <div>
+          Com Professor Afonso Zinga
+        </div>
+
+      </div>
+
 
     </div>
+
 
   </div>
+
 
 </section>
 
 
-<!-- APP -->
+<!-- =======================================================
+     APP
+======================================================== -->
+
 
 <section id="app">
 
@@ -1040,7 +1717,7 @@ body {
   <div class="brand">
 
     <div class="brand-icon">
-      🌱
+      ◉
     </div>
 
     <div>
@@ -1060,6 +1737,7 @@ body {
 
   <div class="header-actions">
 
+
     <div
       id="fonte"
       class="badge"
@@ -1067,12 +1745,14 @@ body {
       DADOS DEMONSTRATIVOS
     </div>
 
+
     <button
       class="logout"
       onclick="logout()"
     >
       Sair
     </button>
+
 
   </div>
 
@@ -1085,21 +1765,26 @@ body {
 
 <aside class="sidebar">
 
+
   <div class="nav-title">
     Monitoramento
   </div>
+
 
   <div class="nav-item active">
     ◉ &nbsp; Dashboard
   </div>
 
+
   <div class="nav-item">
     ⌖ &nbsp; Mapa
   </div>
 
+
   <div class="nav-item">
     ▦ &nbsp; Áreas
   </div>
+
 
   <div class="nav-item">
     ◒ &nbsp; Histórico
@@ -1113,14 +1798,17 @@ body {
     Sistema
   </div>
 
+
   <div class="nav-item">
     ⚙ &nbsp; Configurações
   </div>
+
 
 </aside>
 
 
 <main class="main">
+
 
   <div id="content">
 
@@ -1130,26 +1818,14 @@ body {
 
   </div>
 
+
 </main>
 
 
 </div>
 
+
 </section>
-
-
-<!-- IFRAME DE LOGIN -->
-
-<iframe
-  id="loginFrame"
-  name="loginFrame"
-  style="
-    display:none;
-    width:0;
-    height:0;
-    border:0;
-  "
-></iframe>
 
 
 <script>
@@ -1195,10 +1871,12 @@ document
 
 function realizarLogin() {
 
+
   const senha =
     document
       .getElementById('senha')
-      .value;
+      .value
+      .trim();
 
 
   const erro =
@@ -1206,161 +1884,278 @@ function realizarLogin() {
       .getElementById('loginError');
 
 
+  const botao =
+    document
+      .getElementById('loginButton');
+
+
   erro.style.display =
     'none';
 
 
+  if (!senha) {
+
+    mostrarErroLogin(
+      'Informe a senha.'
+    );
+
+    return;
+  }
+
+
   /*
-   * Form POST para o Apps Script.
-   *
-   * O formulário é enviado para um iframe invisível.
+   * Feedback visual.
    */
-  const form =
-    document.createElement('form');
+
+  botao.disabled =
+    true;
+
+  botao.textContent =
+    'Autenticando...';
 
 
-  form.method =
-    'POST';
+  chamarLoginJSONP(
+    senha,
+    function() {
 
-  form.action =
-    API_URL;
+      botao.disabled =
+        false;
 
-  form.target =
-    'loginFrame';
+      botao.textContent =
+        'Entrar';
 
-
-  const acao =
-    document.createElement('input');
-
-  acao.type =
-    'hidden';
-
-  acao.name =
-    'acao';
-
-  acao.value =
-    'login';
-
-
-  const campoSenha =
-    document.createElement('input');
-
-  campoSenha.type =
-    'hidden';
-
-  campoSenha.name =
-    'senha';
-
-  campoSenha.value =
-    senha;
-
-
-  form.appendChild(
-    acao
+    }
   );
-
-  form.appendChild(
-    campoSenha
-  );
-
-
-  document.body.appendChild(
-    form
-  );
-
-
-  form.submit();
-
-
-  form.remove();
 
 }
 
 
 /************************************************************
- * RESPOSTA DO LOGIN
+ * LOGIN JSONP
  ************************************************************/
 
 
-window.addEventListener(
-  'message',
-  function(event) {
-
-    /*
-     * Aceitamos somente mensagens
-     * vindas do Apps Script.
-     */
-    if (
-      event.origin !==
-      'https://script.google.com' &&
-      event.origin !==
-      'https://script.googleusercontent.com'
-    ) {
-
-      return;
-    }
+function chamarLoginJSONP(
+  senha,
+  finalizacao
+) {
 
 
-    const data =
-      event.data;
+  const callback =
+    'agroRadarLogin_' +
+    Date.now() +
+    '_' +
+    Math.floor(
+      Math.random() * 10000
+    );
 
 
-    if (
-      !data ||
-      data.tipo !==
-      'AGRO_RADAR_LOGIN'
-    ) {
-
-      return;
-    }
+  const script =
+    document.createElement(
+      'script'
+    );
 
 
-    const resultado =
-      data.resultado;
+  const params =
+    new URLSearchParams();
 
 
-    if (
-      resultado &&
-      resultado.sucesso
-    ) {
-
-      token =
-        resultado.token;
+  params.set(
+    'api',
+    'login'
+  );
 
 
-      sessionStorage.setItem(
-        SESSION_KEY,
-        token
+  params.set(
+    'senha',
+    senha
+  );
+
+
+  params.set(
+    'callback',
+    callback
+  );
+
+
+  let finalizado =
+    false;
+
+
+  const timeout =
+    setTimeout(
+      function() {
+
+
+        if (finalizado) {
+          return;
+        }
+
+
+        finalizado =
+          true;
+
+
+        limpar();
+
+
+        if (finalizacao) {
+          finalizacao();
+        }
+
+
+        mostrarErroLogin(
+          'O servidor não respondeu. Verifique a implantação do Apps Script.'
+        );
+
+
+      },
+      15000
+    );
+
+
+  window[callback] =
+    function(resultado) {
+
+
+      if (finalizado) {
+        return;
+      }
+
+
+      finalizado =
+        true;
+
+
+      clearTimeout(
+        timeout
       );
 
 
-      mostrarApp();
+      limpar();
 
 
-      carregarDashboard();
+      if (finalizacao) {
+        finalizacao();
+      }
 
 
-    } else {
+      if (
+        resultado &&
+        resultado.sucesso &&
+        resultado.token
+      ) {
+
+
+        token =
+          resultado.token;
+
+
+        sessionStorage.setItem(
+          SESSION_KEY,
+          token
+        );
+
+
+        mostrarApp();
+
+
+        carregarDashboard();
+
+
+        return;
+
+      }
+
 
       mostrarErroLogin(
+
         resultado &&
         resultado.mensagem
+
           ? resultado.mensagem
-          : 'Não foi possível entrar.'
+
+          : 'Senha inválida.'
+
       );
 
-    }
+    };
+
+
+  function limpar() {
+
+
+    try {
+
+      script.remove();
+
+    } catch (e) {}
+
+
+    try {
+
+      delete window[callback];
+
+    } catch (e) {}
 
   }
-);
 
 
-/**
- * Exibe erro.
- */
+  script.src =
+    API_URL +
+    '?' +
+    params.toString();
+
+
+  script.onerror =
+    function() {
+
+
+      if (finalizado) {
+        return;
+      }
+
+
+      finalizado =
+        true;
+
+
+      clearTimeout(
+        timeout
+      );
+
+
+      limpar();
+
+
+      if (finalizacao) {
+        finalizacao();
+      }
+
+
+      mostrarErroLogin(
+        'Não foi possível conectar ao Agro Radar.'
+      );
+
+    };
+
+
+  document.body.appendChild(
+    script
+  );
+
+}
+
+
+/************************************************************
+ * ERRO LOGIN
+ ************************************************************/
+
+
 function mostrarErroLogin(
   mensagem
 ) {
+
 
   const erro =
     document
@@ -1375,6 +2170,7 @@ function mostrarErroLogin(
 
   erro.style.display =
     'block';
+
 }
 
 
@@ -1387,13 +2183,12 @@ window.addEventListener(
   'DOMContentLoaded',
   function() {
 
+
     if (token) {
 
-      /*
-       * Se já existe token,
-       * valida carregando dashboard.
-       */
+
       mostrarApp();
+
 
       carregarDashboard();
 
@@ -1404,7 +2199,7 @@ window.addEventListener(
 
 
 /************************************************************
- * JSONP
+ * JSONP DAS APIs
  ************************************************************/
 
 
@@ -1414,6 +2209,7 @@ function chamarAPI(
   sucesso,
   falha
 ) {
+
 
   const callback =
     'agroRadarCallback_' +
@@ -1448,15 +2244,18 @@ function chamarAPI(
 
   if (parametros) {
 
+
     Object.keys(
       parametros
     ).forEach(
       chave => {
 
+
         params.set(
           chave,
           parametros[chave]
         );
+
 
       }
     );
@@ -1470,17 +2269,33 @@ function chamarAPI(
     );
 
 
+  let finalizado =
+    false;
+
+
   const timeout =
     setTimeout(
       function() {
 
+
+        if (finalizado) {
+          return;
+        }
+
+
+        finalizado =
+          true;
+
+
         limpar();
+
 
         if (falha) {
 
           falha(
             'Tempo limite da API.'
           );
+
         }
 
       },
@@ -1491,9 +2306,20 @@ function chamarAPI(
   window[callback] =
     function(data) {
 
+
+      if (finalizado) {
+        return;
+      }
+
+
+      finalizado =
+        true;
+
+
       clearTimeout(
         timeout
       );
+
 
       limpar();
 
@@ -1503,27 +2329,37 @@ function chamarAPI(
         data.autenticado === false
       ) {
 
+
         sessionStorage.removeItem(
           SESSION_KEY
         );
 
-        token = null;
+
+        token =
+          null;
+
 
         mostrarLogin();
 
+
         return;
+
       }
 
 
       if (sucesso) {
 
-        sucesso(data);
+        sucesso(
+          data
+        );
+
       }
 
     };
 
 
   function limpar() {
+
 
     try {
 
@@ -1547,9 +2383,42 @@ function chamarAPI(
     params.toString();
 
 
+  script.onerror =
+    function() {
+
+
+      if (finalizado) {
+        return;
+      }
+
+
+      finalizado =
+        true;
+
+
+      clearTimeout(
+        timeout
+      );
+
+
+      limpar();
+
+
+      if (falha) {
+
+        falha(
+          'Não foi possível conectar à API.'
+        );
+
+      }
+
+    };
+
+
   document.body.appendChild(
     script
   );
+
 }
 
 
@@ -1560,6 +2429,7 @@ function chamarAPI(
 
 function carregarDashboard() {
 
+
   chamarAPI(
 
     'dashboard',
@@ -1569,6 +2439,7 @@ function carregarDashboard() {
     renderDashboard,
 
     function(erro) {
+
 
       document
         .getElementById(
@@ -1599,7 +2470,7 @@ function carregarDashboard() {
 
 
 /************************************************************
- * RENDER
+ * RENDER DASHBOARD
  ************************************************************/
 
 
@@ -1607,14 +2478,17 @@ function renderDashboard(
   data
 ) {
 
+
   if (
     !data ||
     !data.sucesso
   ) {
 
+
     mostrarLogin();
 
     return;
+
   }
 
 
@@ -1652,8 +2526,11 @@ function renderDashboard(
       'fonte'
     )
     .textContent =
+
       fonte === 'DEMO'
+
         ? 'DADOS DEMONSTRATIVOS'
+
         : fonte;
 
 
@@ -1668,9 +2545,11 @@ function renderDashboard(
       </h1>
 
       <p class="page-description">
+
         Acompanhe a condição das áreas
         monitoradas e identifique alterações
         que merecem atenção.
+
       </p>
 
 
@@ -1718,10 +2597,12 @@ function renderDashboard(
           </div>
 
           <div class="card-value">
+
             ${numero(
               resumo.ndviMedio,
               2
             )}
+
           </div>
 
           <div class="card-note">
@@ -1756,20 +2637,26 @@ function renderDashboard(
 
         <section class="section">
 
+
           <div class="section-header">
             Propriedade
           </div>
+
 
           <div class="section-body">
 
 
             <div class="property">
 
+
               <div>
 
                 <div class="property-name">
+
                   ${propriedade.NOME || '—'}
+
                 </div>
+
 
                 <div class="property-location">
 
@@ -1800,6 +2687,7 @@ function renderDashboard(
 
               </div>
 
+
             </div>
 
 
@@ -1808,24 +2696,31 @@ function renderDashboard(
               monitoramentos
             )}
 
+
           </div>
+
 
         </section>
 
 
         <section class="section">
 
+
           <div class="section-header">
             Localização
           </div>
 
+
           <div class="map">
+
 
             <div class="map-label">
               Fazenda Boa Vista · ES
             </div>
 
+
             <div class="map-road"></div>
+
 
             <div class="polygon p1"></div>
 
@@ -1833,11 +2728,14 @@ function renderDashboard(
 
             <div class="polygon p3"></div>
 
+
             <div class="pin pin1"></div>
 
             <div class="pin pin2"></div>
 
+
           </div>
+
 
         </section>
 
@@ -1850,9 +2748,11 @@ function renderDashboard(
 
         <section class="section">
 
+
           <div class="section-header">
             Evolução do NDVI
           </div>
+
 
           <div class="section-body">
 
@@ -1862,14 +2762,17 @@ function renderDashboard(
 
           </div>
 
+
         </section>
 
 
         <section class="section">
 
+
           <div class="section-header">
             Alertas
           </div>
+
 
           <div class="section-body">
 
@@ -1880,6 +2783,7 @@ function renderDashboard(
 
           </div>
 
+
         </section>
 
 
@@ -1888,16 +2792,20 @@ function renderDashboard(
 
       <div class="note">
 
+
         <strong>
           Dados demonstrativos.
         </strong>
+
 
         Os indicadores desta versão são
         simulados para validação da experiência
         e arquitetura do Agro Radar.
 
+
         A integração futura com Sentinel-2
         substituirá esta camada por dados reais.
+
 
       </div>
 
@@ -1916,32 +2824,43 @@ function renderAreas(
   monitoramentos
 ) {
 
+
   if (!areas.length) {
 
     return `
+
       <div class="loading">
         Nenhuma área cadastrada.
       </div>
+
     `;
+
   }
 
 
   return areas.map(
     area => {
 
+
       const registros =
         monitoramentos.filter(
           r =>
-            String(r.ID_AREA) ===
-            String(area.ID_AREA)
+            String(
+              r.ID_AREA
+            ) ===
+            String(
+              area.ID_AREA
+            )
         );
 
 
       const ultimo =
         registros.length
+
           ? registros[
               registros.length - 1
             ]
+
           : null;
 
 
@@ -1971,8 +2890,11 @@ function renderAreas(
           <div>
 
             <div class="area-name">
+
               ${area.NOME_AREA}
+
             </div>
+
 
             <div class="area-type">
 
@@ -2017,9 +2939,11 @@ function renderAreas(
           </div>
 
 
-          <div style="
-            text-align:right;
-          ">
+          <div
+            style="
+              text-align:right;
+            "
+          >
 
             <span
               class="
@@ -2029,7 +2953,9 @@ function renderAreas(
                 )}
               "
             >
+
               ${status}
+
             </span>
 
           </div>
@@ -2055,13 +2981,17 @@ function renderAlerts(
   areas
 ) {
 
+
   if (!alertas.length) {
 
     return `
+
       <div class="loading">
         Nenhum alerta.
       </div>
+
     `;
+
   }
 
 
@@ -2069,6 +2999,7 @@ function renderAlerts(
     .slice(0,4)
     .map(
       alerta => {
+
 
         const area =
           areas.find(
@@ -2086,11 +3017,14 @@ function renderAlerts(
 
           <div class="alert">
 
+
             <div class="alert-title">
 
-              ${area
-                ? area.NOME_AREA
-                : 'Área monitorada'}
+              ${
+                area
+                  ? area.NOME_AREA
+                  : 'Área monitorada'
+              }
 
               ·
 
@@ -2098,11 +3032,13 @@ function renderAlerts(
 
             </div>
 
+
             <div class="alert-text">
 
               ${alerta.MENSAGEM}
 
             </div>
+
 
           </div>
 
@@ -2124,13 +3060,17 @@ function renderChart(
   monitoramentos
 ) {
 
+
   if (!monitoramentos.length) {
 
     return `
+
       <div class="loading">
         Sem histórico.
       </div>
+
     `;
+
   }
 
 
@@ -2142,8 +3082,12 @@ function renderChart(
     monitoramentos
       .filter(
         r =>
-          String(r.ID_AREA) ===
-          String(idArea)
+          String(
+            r.ID_AREA
+          ) ===
+          String(
+            idArea
+          )
       )
       .slice(-6);
 
@@ -2151,7 +3095,9 @@ function renderChart(
   const valores =
     registros.map(
       r =>
-        Number(r.NDVI)
+        Number(
+          r.NDVI
+        )
     );
 
 
@@ -2183,14 +3129,18 @@ function renderChart(
       padding:20px 10px;
     ">
 
+
       ${registros.map(
         r => {
+
 
           const altura =
             40 +
             (
               (
-                Number(r.NDVI) -
+                Number(
+                  r.NDVI
+                ) -
                 min
               ) /
               faixa
@@ -2205,9 +3155,11 @@ function renderChart(
               height:${altura}px;
               max-width:48px;
               background:#3f7d53;
-              border-radius:5px 5px 0 0;
+              border-radius:
+                5px 5px 0 0;
               position:relative;
             ">
+
 
               <span style="
                 position:absolute;
@@ -2226,12 +3178,14 @@ function renderChart(
 
               </span>
 
+
             </div>
 
           `;
 
         }
       ).join('')}
+
 
     </div>
 
@@ -2250,14 +3204,18 @@ function numero(
   casas
 ) {
 
+
   if (
     valor === null ||
     valor === undefined ||
     valor === '' ||
-    isNaN(Number(valor))
+    isNaN(
+      Number(valor)
+    )
   ) {
 
     return '—';
+
   }
 
 
@@ -2265,13 +3223,16 @@ function numero(
     .toLocaleString(
       'pt-BR',
       {
+
         minimumFractionDigits:
           casas,
 
         maximumFractionDigits:
           casas
+
       }
     );
+
 }
 
 
@@ -2279,14 +3240,18 @@ function variacaoNumero(
   valor
 ) {
 
+
   if (
     valor === null ||
     valor === undefined ||
     valor === '' ||
-    isNaN(Number(valor))
+    isNaN(
+      Number(valor)
+    )
   ) {
 
     return '—';
+
   }
 
 
@@ -2295,16 +3260,29 @@ function variacaoNumero(
 
 
   return (
-    n > 0 ? '+' : ''
+
+    n > 0
+      ? '+'
+      : ''
+
   ) +
+
   n.toLocaleString(
     'pt-BR',
     {
-      minimumFractionDigits:1,
-      maximumFractionDigits:1
+
+      minimumFractionDigits:
+        1,
+
+      maximumFractionDigits:
+        1
+
     }
+
   ) +
+
   '%';
+
 }
 
 
@@ -2312,9 +3290,12 @@ function classeStatus(
   status
 ) {
 
+
   const s =
-    String(status)
-      .toUpperCase();
+    String(
+      status
+    )
+    .toUpperCase();
 
 
   if (
@@ -2322,6 +3303,7 @@ function classeStatus(
   ) {
 
     return 'atencao';
+
   }
 
 
@@ -2330,10 +3312,12 @@ function classeStatus(
   ) {
 
     return 'monitorar';
+
   }
 
 
   return 'normal';
+
 }
 
 
@@ -2341,8 +3325,11 @@ function dataCurta(
   valor
 ) {
 
+
   const d =
-    new Date(valor);
+    new Date(
+      valor
+    );
 
 
   if (
@@ -2352,16 +3339,23 @@ function dataCurta(
   ) {
 
     return '';
+
   }
 
 
   return d.toLocaleDateString(
     'pt-BR',
     {
-      day:'2-digit',
-      month:'2-digit'
+
+      day:
+        '2-digit',
+
+      month:
+        '2-digit'
+
     }
   );
+
 }
 
 
@@ -2371,6 +3365,7 @@ function dataCurta(
 
 
 function mostrarApp() {
+
 
   document
     .getElementById(
@@ -2386,12 +3381,16 @@ function mostrarApp() {
     )
     .style.display =
       'block';
+
 }
 
 
 function mostrarLogin() {
 
-  token = null;
+
+  token =
+    null;
+
 
   sessionStorage.removeItem(
     SESSION_KEY
@@ -2412,35 +3411,40 @@ function mostrarLogin() {
     )
     .style.display =
       'flex';
+
 }
 
 
 function logout() {
+
 
   if (!token) {
 
     mostrarLogin();
 
     return;
+
   }
 
 
-  /*
-   * Logout pode ser feito por GET.
-   */
   chamarAPI(
+
     'logout',
+
     null,
+
     function() {
 
       mostrarLogin();
 
     },
+
     function() {
 
       mostrarLogin();
 
     }
+
   );
 
 }
